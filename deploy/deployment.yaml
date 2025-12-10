@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-name: myproject-api
+  name: basickube
 spec:
-replicas: 1
-selector:
-matchLabels:
-app: myproject-api
-template:
-metadata:
-labels:
-app: myproject-api
-spec:
-containers:
-- name: api
-image: dockerhubuser/myproject:latest
-ports:
-- containerPort: 80
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basickube
+  template:
+    metadata:
+      labels:
+        app: basickube
+    spec:
+      containers:
+      - name: basickube
+        image: basickube/basickube:latest
+        ports:
+        - containerPort: 8080
