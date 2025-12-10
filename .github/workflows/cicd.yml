@@ -1,12 +1,15 @@
-name: CI/CD - ${{ github.ref_name }} - ${{ steps.get_message.outputs.short_msg }}
+name: CI/CD
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       branch:
         description: 'Branch to deploy'
         required: true
-        default: feature/ingress
+        default: main
 
 jobs:
   build-and-deploy:
