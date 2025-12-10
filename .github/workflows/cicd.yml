@@ -6,7 +6,7 @@ on:
       branch:
         description: 'Branch to deploy'
         required: true
-        default: ingress
+        default: feature/ingress
 
 jobs:
   build-and-deploy:
