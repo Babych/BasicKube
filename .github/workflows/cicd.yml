@@ -38,6 +38,9 @@ jobs:
         run: |
           echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > kubeconfig
 
+      - name: Create namespace
+        run: kubectl --kubeconfig=kubeconfig create namespace basickube-ns || true
+
       - name: Deploy to AKS
         run: |
           kubectl --kubeconfig=kubeconfig apply -f deploy/deployment.yaml
