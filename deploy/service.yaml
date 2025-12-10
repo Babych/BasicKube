@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: basickube-service
-  namespace: default
+  namespace: basickube-ns
 spec:
   type: ClusterIP
   selector:
