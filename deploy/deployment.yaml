@@ -19,3 +19,8 @@ spec:
           image: dbabych/basickube:latest
           ports:
             - containerPort: 8080
+      tolerations:
+      - key: "mode"
+        operator: "Equal"
+        value: "user"
+        effect: "NoSchedule"
