@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI/CD - ${{ github.ref_name }} - ${{ steps.get_message.outputs.short_msg }}
 
 on:
   workflow_dispatch:
