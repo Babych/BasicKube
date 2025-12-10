@@ -13,14 +13,14 @@ spec:
         app: basickube
     spec:
       nodeSelector:
-        agentpool: smallsystem
-      containers:
-        - name: basickube
-          image: dbabych/basickube:latest
-          ports:
-            - containerPort: 8080
+        agentpool: cheappool
       tolerations:
-      - key: "mode"
+      - key: "node.kubernetes.io/mode"
         operator: "Equal"
         value: "user"
         effect: "NoSchedule"
+      containers:
+      - name: basickube
+        image: dbabych/basickube:latest
+        ports:
+        - containerPort: 8080
