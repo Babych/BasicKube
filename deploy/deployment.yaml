@@ -13,7 +13,7 @@ spec:
         app: basickube
     spec:
       nodeSelector:
-        agentpool: cheappool
+        agentpool: smallsystem
       containers:
         - name: basickube
           image: dbabych/basickube:latest
