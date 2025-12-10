@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: basickube
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: basickube
@@ -12,9 +12,10 @@ spec:
       labels:
         app: basickube
     spec:
+      nodeSelector:
+        agentpool: cheappool
       containers:
         - name: basickube
           image: dbabych/basickube:latest
-          imagePullPolicy: Always
           ports:
             - containerPort: 8080
