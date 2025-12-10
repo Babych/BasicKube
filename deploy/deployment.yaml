@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: basickube
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/basickube:latest
+          image: dbabych/basickube:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
