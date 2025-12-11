@@ -4,8 +4,9 @@ metadata:
   name: basickube-ingress
   namespace: basickube-ns
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
+  ingressClassName: nginx
   rules:
   - host: basickube.172.199.209.31.nip.io
     http:
@@ -17,3 +18,7 @@ spec:
             name: basickube-service
             port:
               number: 80
+  tls:
+  - hosts:
+    - basickube.172.199.209.31.nip.io
+    secretName: basickube-tls
