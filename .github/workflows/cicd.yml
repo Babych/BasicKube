@@ -46,3 +46,7 @@ jobs:
           kubectl --kubeconfig=kubeconfig apply -f deploy/deployment.yaml
           kubectl --kubeconfig=kubeconfig apply -f deploy/service.yaml
           kubectl --kubeconfig=kubeconfig apply -f deploy/ingress.yaml
+
+      - name: Force rollout restart
+        run: |
+          kubectl --kubeconfig=kubeconfig rollout restart deployment/basickube -n basickube-ns
