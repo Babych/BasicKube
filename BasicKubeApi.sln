@@ -16,9 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.github\workflows\cicd.yml = .github\workflows\cicd.yml
 		deploy\deployment.yaml = deploy\deployment.yaml
 		deploy\ingress.yaml = deploy\ingress.yaml
-		terraform\main.tf = terraform\main.tf
+		README.md = README.md
 		deploy\service.yaml = deploy\service.yaml
-		terraform\variables.tf = terraform\variables.tf
 	EndProjectSection
 EndProject
 Global

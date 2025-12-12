@@ -1,33 +1,32 @@
+using BasicKube.Application.Queries;
+
+using MediatR;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace BasicKubeApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly IMediator _mediator;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherController(IMediator mediator)
         {
-            _logger = logger;
+            _mediator = mediator;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet("temperature")]
+        public async Task<double> GetTemperature(
+            [FromQuery] double lat,
+            [FromQuery] double lon)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return await _mediator.Send(new GetTempQuery
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                Lat = lat,
+                Lon = lon
+            });
         }
     }
 }

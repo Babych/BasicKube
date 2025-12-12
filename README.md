@@ -53,8 +53,6 @@ kubectl describe certificate basickube-tls -n basickube-ns
 kubectl get secret basickube-tls -n basickube-ns
 
 3. Access the Application
-HTTP: http://basickube.172.199.209.31.nip.io/weatherforecast
-
-HTTPS (staging): https://basickube.172.199.209.31.nip.io/weatherforecast
+HTTPS (staging): https://basickube.172.199.209.31.nip.io/weather/temperature?lat=50.44&lon=30.52
 
 Chrome may show "Not Secure" if using url with IP adress. Edge may display it as secure.
