@@ -24,37 +24,36 @@ This project demonstrates a simple Kubernetes deployment on AKS, exposed via an 
 ```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
 GitHub Actions runner (optional for CI/CD)
+```
 
 Deployment Steps
 1. ClusterIssuer (Let's Encrypt staging)
 Create a ClusterIssuer for staging certificates:
 
-yaml
-Copy code: https://github.com/Babych/BasicKube/blob/main/deploy/ingress%20configs/cluster-issuer.yaml
+Copy code: [https://github.com/Babych/BasicKube/blob/main/deploy/ingress%20configs/cluster-issuer.yaml](https://github.com/Babych/BasicKube/blob/main/deploy/ingress%20configs/cluster-issuer.yaml)
 
-bash
+```bash
 kubectl apply -f cluster-issuer.yaml
+```
 
 2. Deployment & Service
 Create your Deployment and Service for basickube:
 
-Copy code:
-https://github.com/Babych/BasicKube/blob/main/deploy/deployment.yaml
-https://github.com/Babych/BasicKube/blob/main/deploy/service.yaml
-https://github.com/Babych/BasicKube/blob/main/deploy/ingress.yaml
+[https://github.com/Babych/BasicKube/blob/main/deploy/deployment.yaml](https://github.com/Babych/BasicKube/blob/main/deploy/deployment.yaml)
+[https://github.com/Babych/BasicKube/blob/main/deploy/service.yaml](https://github.com/Babych/BasicKube/blob/main/deploy/service.yaml)
+[https://github.com/Babych/BasicKube/blob/main/deploy/ingress.yaml](https://github.com/Babych/BasicKube/blob/main/deploy/ingress.yaml)
 
-Apply them in CI/CD: https://github.com/Babych/BasicKube/blob/main/.github/workflows/cicd.yml
+Apply them in CI/CD: [https://github.com/Babych/BasicKube/blob/main/.github/workflows/cicd.yml](https://github.com/Babych/BasicKube/blob/main/.github/workflows/cicd.yml)
 
 Check certificate status:
 
-bash
 Copy code
+```bash
 kubectl describe certificate basickube-tls -n basickube-ns
 kubectl get secret basickube-tls -n basickube-ns
+```
 
 3. Access the Application
-HTTP: http://basickube.172.199.209.31.nip.io/weatherforecast
-
-HTTPS (staging): https://basickube.172.199.209.31.nip.io/weatherforecast
+HTTPS: [https://basickube.172.199.209.31.nip.io/weatherforecast/temperature?lat=50.44&lon=20.52](https://basickube.172.199.209.31.nip.io/weatherforecast/temperature?lat=50.44&lon=20.52)
 
 Chrome may show "Not Secure" if using url with IP adress. Edge may display it as secure.
