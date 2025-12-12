@@ -5,20 +5,21 @@ metadata:
   namespace: basickube-ns
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   ingressClassName: nginx
   rules:
-  - host: basickube.172.199.209.31.nip.io
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: basickube-service
-            port:
-              number: 80
+    - host: basickube.172.199.209.31.nip.io
+      http:
+        paths:
+          - path: /(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: basickube-service
+                port:
+                  number: 80
   tls:
-  - hosts:
-    - basickube.172.199.209.31.nip.io
-    secretName: basickube-tls
+    - hosts:
+        - basickube.172.199.209.31.nip.io
+      secretName: basickube-tls

@@ -24,7 +24,7 @@ namespace BasicKubeApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetTemperature")]
+        [HttpGet("temperature")]
         public async Task<double> GetTemperature(
             [FromQuery] double lat,
             [FromQuery] double lon)
@@ -69,7 +69,7 @@ namespace BasicKubeApi.Controllers
             return [g4];
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet]
         public IEnumerable<object> Get()
         {
             _logger.LogInformation("GetWeatherForecast");
