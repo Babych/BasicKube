@@ -37,6 +37,38 @@ namespace BasicKubeApi.Controllers
             });
         }
 
+        [HttpGet(Name = "GetG1")]
+        public IEnumerable<string> GetG1()
+        {
+            _logger.LogInformation("G1");
+            return ["GetG1"];
+        }
+
+        [HttpGet(Name = "GetG2")]
+        public async Task<IEnumerable<string>> GetG2()
+        {
+            _logger.LogInformation("G2");
+
+            await Task.CompletedTask;
+            return ["GetG1"];
+        }
+
+        [HttpGet(Name = "GetG3")]
+        public IEnumerable<string> GetG3([FromQuery] string g3)
+        {
+            _logger.LogInformation("G3");
+            return [g3];
+        }
+
+        [HttpGet(Name = "GetG4")]
+        public async Task<IEnumerable<string>> GetG4([FromQuery] string g4)
+        {
+            _logger.LogInformation("G2");
+
+            await Task.CompletedTask;
+            return [g4];
+        }
+
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<object> Get()
         {
