@@ -24,4 +24,7 @@ spec:
       - name: basickube
         image: dbabych/basickube:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80           # Must match Service targetPort
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80           # Listen on all network interfaces

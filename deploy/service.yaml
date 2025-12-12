@@ -4,10 +4,9 @@ metadata:
   name: basickube-service
   namespace: basickube-ns
 spec:
-  type: ClusterIP
   selector:
     app: basickube
   ports:
-    - port: 80
-      targetPort: 8080
-      protocol: TCP
+    - protocol: TCP
+      port: 80       # external service port
+      targetPort: 80 # must match containerPort
