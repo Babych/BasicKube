@@ -7,79 +7,78 @@ using Microsoft.AspNetCore.Mvc;
 namespace BasicKubeApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("weatherforecast")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries =
-        [
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        ];
-
         private readonly IMediator _mediator;
         private readonly ILogger<WeatherForecastController> _logger;
 
+        private static readonly string[] Summaries =
+        [
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild",
+        "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        ];
+
         public WeatherForecastController(ILogger<WeatherForecastController> logger, IMediator mediator)
         {
-            _mediator = mediator;
             _logger = logger;
+            _mediator = mediator;
         }
 
+        // GET /weatherforecast/temperature?lat=..&lon=..
         [HttpGet("temperature")]
-        public async Task<double> GetTemperature(
-            [FromQuery] double lat,
-            [FromQuery] double lon)
+        public async Task<double> GetTemperature([FromQuery] double lat, [FromQuery] double lon)
         {
-            _logger.LogInformation("temperature");
-            return await _mediator.Send(new GetTempQuery
-            {
-                Lat = lat,
-                Lon = lon
-            });
+            _logger.LogInformation("GetTemperature called");
+            return await _mediator.Send(new GetTempQuery { Lat = lat, Lon = lon });
         }
 
-        [HttpGet(Name = "GetG1")]
+        // GET /weatherforecast/g1
+        [HttpGet("g1")]
         public IEnumerable<string> GetG1()
         {
-            _logger.LogInformation("G1");
-            return ["GetG1"];
+            _logger.LogInformation("GetG1 called");
+            return new[] { "GetG1" };
         }
 
-        [HttpGet(Name = "GetG2")]
+        // GET /weatherforecast/g2
+        [HttpGet("g2")]
         public async Task<IEnumerable<string>> GetG2()
         {
-            _logger.LogInformation("G2");
-
+            _logger.LogInformation("GetG2 called");
             await Task.CompletedTask;
-            return ["GetG1"];
+            return new[] { "GetG2" };
         }
 
-        [HttpGet(Name = "GetG3")]
+        // GET /weatherforecast/g3?g3=value
+        [HttpGet("g3")]
         public IEnumerable<string> GetG3([FromQuery] string g3)
         {
-            _logger.LogInformation("G3");
-            return [g3];
+            _logger.LogInformation("GetG3 called");
+            return new[] { g3 };
         }
 
-        [HttpGet(Name = "GetG4")]
+        // GET /weatherforecast/g4?g4=value
+        [HttpGet("g4")]
         public async Task<IEnumerable<string>> GetG4([FromQuery] string g4)
         {
-            _logger.LogInformation("G2");
-
+            _logger.LogInformation("GetG4 called");
             await Task.CompletedTask;
-            return [g4];
+            return new[] { g4 };
         }
 
+        // GET /weatherforecast
         [HttpGet]
-        public IEnumerable<object> Get()
+        public IEnumerable<object> GetWeatherForecast()
         {
-            _logger.LogInformation("GetWeatherForecast");
+            _logger.LogInformation("GetWeatherForecast called");
+
             return Enumerable.Range(1, 5).Select(index => new
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            });
         }
     }
 }
