@@ -8,5 +8,5 @@ spec:
     app: basickube
   ports:
     - protocol: TCP
-      port: 80       # external service port
-      targetPort: 80 # must match containerPort
+      port: 80
+      targetPort: 80

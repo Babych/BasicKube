@@ -3,7 +3,7 @@ name: CI/CD
 on:
   push:
     branches:
-      - feature/mediatr
+      - main
   workflow_dispatch:
     inputs:
       branch:
