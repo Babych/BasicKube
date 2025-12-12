@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BasicKube.Application\BasicKube.Application.csproj" />
     <ProjectReference Include="..\BasicKube.Domain\BasicKube.Domain.csproj" />
   </ItemGroup>
 

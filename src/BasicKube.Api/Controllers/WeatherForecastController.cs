@@ -1,13 +1,9 @@
-using BasicKube.Application.Queries;
-
-using MediatR;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace BasicKubeApi.Controllers
 {
     [ApiController]
-    [Route("weatherforecast")]
+    [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly IMediator _mediator;
