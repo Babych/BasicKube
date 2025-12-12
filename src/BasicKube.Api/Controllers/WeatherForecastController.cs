@@ -24,7 +24,7 @@ namespace BasicKubeApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet("temperature")]
+        [HttpGet("GetTemperature")]
         public async Task<double> GetTemperature(
             [FromQuery] double lat,
             [FromQuery] double lon)
