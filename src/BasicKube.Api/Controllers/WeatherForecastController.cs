@@ -8,11 +8,8 @@ namespace BasicKubeApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherController : ControllerBase
+    public class WeatherForecastController : ControllerBase
     {
-        private readonly IMediator _mediator;
-
-        public WeatherController(IMediator mediator)
         private readonly IMediator _mediator;
         private readonly ILogger<WeatherForecastController> _logger;
 
@@ -23,16 +20,6 @@ namespace BasicKubeApi.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("temperature")]
-        public async Task<double> GetTemperature(
-            [FromQuery] double lat,
-            [FromQuery] double lon)
-        {
-            return await _mediator.Send(new GetTempQuery
-            {
-                Lat = lat,
-                Lon = lon
-            });
         // GET /weatherforecast/temperature?lat=..&lon=..
         [HttpGet("temperature")]
         public async Task<double> GetTemperature([FromQuery] double lat, [FromQuery] double lon)
