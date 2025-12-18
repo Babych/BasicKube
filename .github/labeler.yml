@@ -2,6 +2,8 @@ dotnet:
   - '**/*.cs'
   - '**/*.fs'
   - '**/*.vb'
+  - '**/*.sln'
+
 
 tests:
   - '**/*Test*.cs'
