@@ -6,7 +6,7 @@ This project demonstrates a simple Kubernetes deployment on AKS, exposed via an 
 
 ## Features
 
-- Kubernetes Deployment & Service
+- Kubernetes Deployment
 - Ingress with nip.io domain
 - TLS via cert-manager
 - Optional self-signed certificates for local development

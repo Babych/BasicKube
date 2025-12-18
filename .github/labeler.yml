@@ -3,6 +3,10 @@ dotnet:
   - '**/*.fs'
   - '**/*.vb'
 
+solution:
+  - '**/*.sln'
+
+
 tests:
   - '**/*Test*.cs'
   - '**/*Tests/*.cs'
