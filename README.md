@@ -56,4 +56,6 @@ kubectl get secret basickube-tls -n basickube-ns
 3. Access the Application
 HTTPS: [https://basickube.172.199.209.31.nip.io/weatherforecast/temperature?lat=50.44&lon=30.52](https://basickube.172.199.209.31.nip.io/weatherforecast/temperature?lat=50.44&lon=30.52)
 
+Swagger: [https://basickube.172.199.209.31.nip.io/swagger/index.html](https://basickube.172.199.209.31.nip.io/swagger/index.html)
+
 Chrome may show "Not Secure" if using url with IP adress. Edge may display it as secure.
