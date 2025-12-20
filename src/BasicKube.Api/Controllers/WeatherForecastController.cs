@@ -1,31 +1,36 @@
-using BasicKube.Application.Queries;
+﻿using BasicKube.Application.Queries;
 
 using MediatR;
 
-using Microsoft.AspNetCore.Mvc;
-
-namespace BasicKubeApi.Controllers
+public static class WeatherEndpoints
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    /// <summary>
+    /// https://{base_url}/WeatherForecast/temperature?lat=50.44&lon=30.52
+    /// </summary>
+    /// <param name="app"></param>
+    /// <returns></returns>
+    public static IEndpointRouteBuilder MapWeatherEndpoints(
+        this IEndpointRouteBuilder app)
     {
-        private readonly IMediator _mediator;
-        private readonly ILogger<WeatherForecastController> _logger;
+        app.MapGet(
+            "/weatherforecast/temperature",
+            async (
+                double lat,
+                double lon,
+                IMediator mediator,
+                ILoggerFactory loggerFactory) =>
+            {
+                var logger = loggerFactory.CreateLogger("WeatherEndpoints");
+                logger.LogInformation("temperature called");
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IMediator mediator)
-        {
-            _mediator = mediator;
-            _logger = logger;
-            _mediator = mediator;
-        }
+                return await mediator.Send(new GetTempQuery
+                {
+                    Lat = lat,
+                    Lon = lon
+                });
+            })
+            .WithName("GetTemperature");
 
-        // GET /weatherforecast/temperature?lat=..&lon=..
-        [HttpGet("temperature")]
-        public async Task<double> GetTemperature([FromQuery] double lat, [FromQuery] double lon)
-        {
-            _logger.LogInformation("temperature called");
-            return await _mediator.Send(new GetTempQuery { Lat = lat, Lon = lon });
-        }
+        return app;
     }
 }
