@@ -22,5 +22,15 @@ namespace BasicKube.Infrastructure.Wather
 
             return result!.Current.Temperature_2m;
         }
+
+        public async Task<double> GetCurrentWindAsync(double lat, double lon)
+        {
+            string url =
+                $"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=wind_speed_10m";
+
+            var result = await _http.GetFromJsonAsync<WindResponseDto>(url);
+
+            return result.Current.WindSpeed10m;
+        }
     }
 }
