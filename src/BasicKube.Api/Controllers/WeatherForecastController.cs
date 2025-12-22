@@ -16,10 +16,10 @@ public static class WeatherEndpoints
         app.MapGet(
             "/weatherforecast/temperature",
             async (
-                double lat,
-                double lon,
                 IMediator mediator,
-                ILoggerFactory loggerFactory) =>
+                ILoggerFactory loggerFactory,
+                double lat = 50.44,
+                double lon = 30.52) =>
             {
                 var logger = loggerFactory.CreateLogger("WeatherEndpoints");
                 logger.LogInformation("temperature called");
@@ -36,10 +36,10 @@ public static class WeatherEndpoints
         app.MapGet(
             "/weatherforecast/wind",
             async (
-                double lat,
-                double lon,
                 IMediator mediator,
-                ILoggerFactory loggerFactory) =>
+                ILoggerFactory loggerFactory,
+                double lat = 50.44,
+                double lon = 30.52) =>
             {
                 var logger = loggerFactory.CreateLogger("WeatherEndpoints");
                 logger.LogInformation("wind called");
