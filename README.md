@@ -1,4 +1,4 @@
-[![CI/CD](https://github.com/Babych/BasicKube/actions/workflows/cicd.yml/badge.svg)](https://github.com/Babych/BasicKube/actions/workflows/cicd.yml)
+[![CI/CD](https://github.com/Babych/BasicKube/actions/workflows/cicd.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/Babych/BasicKube/actions/workflows/cicd.yml)
 
 # Basickube Deployment on AKS with TLS (nip.io)
 
