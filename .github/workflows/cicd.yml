@@ -32,7 +32,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test --configuration Release --no-build \
+        run: dotnet test --configuration Release --no-build `
              --logger "trx;LogFileName=test-results.trx"
       
       - name: Publish test results
