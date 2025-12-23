@@ -1,3 +1,5 @@
+[![CI/CD](https://github.com/Babych/BasicKube/actions/workflows/cicd.yml/badge.svg)](https://github.com/Babych/BasicKube/actions/workflows/cicd.yml)
+
 # Basickube Deployment on AKS with TLS (nip.io)
 
 This project demonstrates a simple Kubernetes deployment on AKS, exposed via an Ingress using **nip.io**, with automatic TLS certificates issued by **cert-manager** and Let's Encrypt (staging or production).
