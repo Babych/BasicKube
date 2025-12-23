@@ -32,7 +32,17 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test --configuration Release --no-build
+        run: dotnet test --configuration Release --no-build \
+             --logger "trx;LogFileName=test-results.trx"
+      
+      - name: Publish test results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: .NET Tests
+          path: "**/TestResults/*.trx"
+          reporter: dotnet-trx
+
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
