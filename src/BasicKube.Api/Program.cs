@@ -3,7 +3,7 @@ using BasicKube.Infrastructure.Wather;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services
+// Add services 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient<IWeatherService, WeatherService>();
@@ -26,3 +26,5 @@ app.UseSwaggerUI(options =>
 app.MapWeatherEndpoints();
 
 app.Run();
+
+public partial class Program { }
