@@ -1,4 +1,8 @@
+# BasicKube
+
 [![Tests](https://github.com/Babych/BasicKube/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/Babych/BasicKube/actions/workflows/tests.yml)
+[![CI/CD](https://github.com/Babych/BasicKube/actions/workflows/cicd.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/Babych/BasicKube/actions/workflows/cicd.yml) 
+
 
 # Basickube Deployment on AKS with TLS (nip.io)
 
